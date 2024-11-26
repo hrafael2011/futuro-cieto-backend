@@ -17,6 +17,12 @@ from .serializer import (navSerializer,
 
 
 
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("¡Bienvenido a la página de inicio!")
+
+
 # Create your views here.
 class navView(viewsets.ModelViewSet):
     queryset  = navigation.objects.filter(is_active=True)
