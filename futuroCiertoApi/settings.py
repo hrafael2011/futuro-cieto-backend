@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-&=)%5@(0p4(gqw076#8b_f0b46$&^q1&26p7)ck-g^qiqn%+w9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['futurociertobackend-dqd2bzajgkcackd2.canadacentral-01.azurewebsites.net','localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['futurociertobackend-dqd2bzajgkcackd2.canadacentral-01.azurewebsites.net',
+                 'futurociertobackend-staging-dggycge3asaad4bq.canadacentral-01.azurewebsites.net',
+                 'localhost', 
+                 '127.0.0.1']
 
 
 # Application definition
