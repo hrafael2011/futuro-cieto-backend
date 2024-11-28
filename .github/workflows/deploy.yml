@@ -1,4 +1,4 @@
-name: Deploy to Azure Slot
+name: Deploy Django API to Azure Slot
 
 on:
   push:
@@ -14,21 +14,33 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # 2. Configura Node.js (si usas React, Angular, etc.)
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
+    # 2. Configura Python
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        node-version: '16' # Cambia según la versión que uses
+        python-version: '3.9' # Cambia según la versión que uses
 
-    # 3. Instala dependencias (si aplican)
+    # 3. Instala dependencias de Python
     - name: Install dependencies
-      run: npm install
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install --upgrade pip
+        pip install -r requirements.txt
 
-    # 4. Construye la aplicación
-    - name: Build the project
-      run: npm run build
+    # 4. Ejecuta migraciones de base de datos (opcional)
+    - name: Run database migrations
+      run: |
+        source venv/bin/activate
+        python manage.py migrate
 
-    # 5. Despliega al slot en Azure App Service
+    # 5. Recopila archivos estáticos (si aplica)
+    - name: Collect static files
+      run: |
+        source venv/bin/activate
+        python manage.py collectstatic --noinput
+
+    # 6. Despliega al slot en Azure App Service
     - name: Deploy to Azure Slot
       uses: azure/webapps-deploy@v2
       with:
