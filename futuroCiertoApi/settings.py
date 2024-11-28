@@ -29,7 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['futurociertobackend-dqd2bzajgkcackd2.canadacentral-01.azurewebsites.net',
                  'futurociertobackend-staging-dggycge3asaad4bq.canadacentral-01.azurewebsites.net',
                  'futurociertobackend-staging2-dua9gjh6ekbkbjh5.canadacentral-01.azurewebsites.net',
-                 'localhost', 
+                 'localhost','futurociertord.azurewebsites.net' 
                  '127.0.0.1']
 
 
